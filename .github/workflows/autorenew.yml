@@ -1,5 +1,5 @@
 #自动调用api保活，加密版
-name: Auto Api Secret
+name: Auto Renew O365 E5
 
 on: 
   release:
