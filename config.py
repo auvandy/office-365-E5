@@ -2,11 +2,6 @@
 import requests as req
 import json,sys,time
 
-
-
-
-
-
 path=sys.path[0]+r'/config.txt'
 num1 = 0
 
