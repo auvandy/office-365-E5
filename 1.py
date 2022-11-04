@@ -2,7 +2,7 @@
 import requests as req
 import json,sys,time
 
-path=sys.path[0]+r'/config.txt'
+path=sys.path[0]+r'/1.txt'
 num1 = 0
 
 def gettoken(refresh_token):
