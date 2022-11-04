@@ -36,8 +36,8 @@ jobs:
         cp config.py t.py
         echo $CONFIG_ID > configid.txt
         echo $CONFIG_KEY > configkey.txt
-        sed -i '10 r configid.txt' t.py
-        sed -i '12 r configkey.txt' t.py
+        sed -i '4 r configid.txt' t.py
+        sed -i '6 r configkey.txt' t.py
     - name: Test Api #Api调用
       run: | 
         echo `date +"%Y-%m-%d %H:%M:%S"` begin > time.log
