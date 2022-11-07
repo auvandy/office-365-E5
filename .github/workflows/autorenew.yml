@@ -21,36 +21,36 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@master
-    - name: Set up Python #安装python
+    - name: Set up Python
       uses: actions/setup-python@v1
       with:
         python-version: 3.8
-    - name: Install requests #安装requests
+    - name: Install requests
       run: |
         pip install requests
-    - name: Read config from secrets  #读取机密
+    - name: Read config from secrets
       env: 
-        CONFIG_ID: ${{ secrets.CONFIG_ID }} # secrets_id 提供
-        CONFIG_KEY: ${{ secrets.CONFIG_KEY }} # secrets_key 提供
+        CONFIG_ID: ${{ secrets.CONFIG_ID }}
+        CONFIG_KEY: ${{ secrets.CONFIG_KEY }}
       run: | 
         cp config.py t.py
         echo $CONFIG_ID > configid.txt
         echo $CONFIG_KEY > configkey.txt
         sed -i '4 r configid.txt' t.py
         sed -i '6 r configkey.txt' t.py
-    - name: Test Api #Api调用
+    - name: Test Api
       run: | 
         echo `date +"%Y-%m-%d %H:%M:%S"` begin > time.log
         python t.py
-    - name: Delete secrets config #删除机密
+    - name: Delete secrets config
       run: | 
         rm -f t.py
         rm -f configid.txt
         rm -f configkey.txt    
-    - name: Commit #上传新的refresh_token到仓库
+    - name: Commit 
       run: |
-        git config --global user.email AutoupdateRobot@email.com
-        git config --global user.name AutoupdateRobot
+        git config --global user.email auvandy@hotmail.com
+        git config --global user.name autorenew
         git add .
         git commit -m "update new refresh_token" -a
     - name: Push changes
