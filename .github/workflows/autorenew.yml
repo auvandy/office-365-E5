@@ -22,7 +22,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@master
     - name: Set up Python
-      run: echo "::set-output name={python}::{v1}"
+      run: echo "{python}={v1}" >> $GITHUB_OUTPUT
 #    - name: Set up Python
 #      uses: actions/setup-python@v1
 #      with:
