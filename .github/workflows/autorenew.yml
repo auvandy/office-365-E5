@@ -17,13 +17,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-#    if: github.event.repository.owner.id == github.event.sender.id  # 自己点的 start
+#    if: github.event.repository.owner.id == github.event.sender.id  # 自己点start运行
     steps:
     - name: Checkout
       uses: actions/checkout@master
-    - name: Set up Python
+    - name: Setup Python
       run: echo "{python}={v1}" >> $GITHUB_OUTPUT
-#    - name: Set up Python
+#   旧版Github代码
+#    - name: Setup Python
 #      uses: actions/setup-python@v1
 #      with:
 #        python-version: 3.8
@@ -35,18 +36,18 @@ jobs:
         CONFIG_ID: ${{ secrets.CONFIG_ID }}
         CONFIG_KEY: ${{ secrets.CONFIG_KEY }}
       run: | 
-        cp config.py t.py
+        cp config.py temp.py
         echo $CONFIG_ID > configid.txt
         echo $CONFIG_KEY > configkey.txt
-        sed -i '4 r configid.txt' t.py
-        sed -i '6 r configkey.txt' t.py
+        sed -i '4 r configid.txt' temp.py
+        sed -i '6 r configkey.txt' temp.py
     - name: Test Api
       run: | 
         echo `date +"%Y-%m-%d %H:%M:%S"` begin > time.log
-        python t.py
+        python temp.py
     - name: Delete secrets config
       run: | 
-        rm -f t.py
+        rm -f temp.py
         rm -f configid.txt
         rm -f configkey.txt    
     - name: Commit 
