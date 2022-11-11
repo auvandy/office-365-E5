@@ -23,11 +23,6 @@ jobs:
       uses: actions/checkout@master
     - name: Setup Python
       run: echo "{python}={v1}" >> $GITHUB_OUTPUT
-#   旧版Github代码
-#    - name: Setup Python
-#      uses: actions/setup-python@v1
-#      with:
-#        python-version: 3.8
     - name: Install requests
       run: |
         pip install requests
