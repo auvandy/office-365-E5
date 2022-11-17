@@ -10,8 +10,7 @@ on:
   #  branches: 
   #    - master
   schedule:
-  #  - cron: "12 */6 * * 1-5" #周一到周五每天运行三次，每6个小时一次
-     - cron: "* * */2 * *" #每两天运行一次
+    - cron: "12 */6 * * 1-5" #周一到周五每天运行三次，每6个小时一次
   watch:
     types: [started]
    
